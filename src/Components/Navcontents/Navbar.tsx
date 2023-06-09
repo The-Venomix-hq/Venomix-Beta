@@ -3,18 +3,15 @@ import logo from "../../assets/Venomix2 1.svg";
 import ConnectWallet from "../ConnectWallet";
 import { VenomConnect } from "venom-connect";
 
-
 type Props = {
   venomConnect: VenomConnect | undefined;
 };
 
-const Navbar = ({venomConnect}: Props) => {
-
+const Navbar = ({ venomConnect }: Props) => {
   const login = async () => {
     if (!venomConnect) return;
     await venomConnect.connect();
   };
-
 
   const openNav = () => {
     const bars: any = document.querySelector("#bars");
@@ -37,22 +34,26 @@ const Navbar = ({venomConnect}: Props) => {
       <div className="flex flex-row justify-between items-center lg:flex">
         <img src={logo} alt="" className="w-auto h-14" />
         <div className="lg:flex hidden flex-row justify-between items-center space-x-10">
+          <ConnectWallet>
+            <a
+              className="btn font-medium hover:cursor-pointer hover:font-bold"
+              onClick={login}
+            >
+              Create Events
+            </a>
+          </ConnectWallet>
           <Link
-            to="/create-profile"
-            className="font-medium hover:cursor-pointer hover:font-bold"
+            to=""
+            className="hover:cursor-pointer font-medium hover:font-bold"
           >
-            Create Events
-          </Link>
-          <Link to="" className="hover:cursor-pointer font-medium hover:font-bold">
             Your Tickets
           </Link>
-          <Link to="" className="hover:cursor-pointer font-medium hover:font-bold">
+          <Link
+            to=""
+            className="hover:cursor-pointer font-medium hover:font-bold"
+          >
             Contacts
           </Link>
-          <ConnectWallet>    
-          <a className="btn" onClick={login}>
-          Connect wallet
-        </a></ConnectWallet>
         </div>
         <div className="lg:hidden block text-customDarkBlue">
           <i className="la la-bars la-2x" id="bars" onClick={openNav}></i>
@@ -73,10 +74,16 @@ const Navbar = ({venomConnect}: Props) => {
         >
           Create Events
         </Link>
-        <Link to="" className="hover:cursor-pointer font-medium hover:font-bold">
+        <Link
+          to=""
+          className="hover:cursor-pointer font-medium hover:font-bold"
+        >
           Your Tickets
         </Link>
-        <Link to="" className="hover:cursor-pointer font-medium hover:font-bold">
+        <Link
+          to=""
+          className="hover:cursor-pointer font-medium hover:font-bold"
+        >
           Contacts
         </Link>
       </div>
